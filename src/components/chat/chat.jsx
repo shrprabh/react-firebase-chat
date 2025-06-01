@@ -40,13 +40,15 @@ const Chat = () => {
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <div className="emonji">
+        <div className="emoji">
           <img
             src="./emoji.png"
             alt=""
             onClick={() => setOpen((prev) => !prev)}
           />
-          <EmonjiPicker open={open} onEmojiClick={handleEmojiClick} />
+          <div className="picker">
+            <EmonjiPicker open={open} onEmojiClick={handleEmojiClick} />
+          </div>
         </div>
         <button className="sendButton">Send</button>
       </div>

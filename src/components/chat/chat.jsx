@@ -1,10 +1,15 @@
 import "./chat.css";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-import EmonjiPicker from "emoji-picker-react";
+import EmojiPicker from "emoji-picker-react";
 const Chat = () => {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
+  const endRef = useRef(null);
+
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, []);
   const handleEmojiClick = (event) => {
     setText((prev) => prev + event.emoji);
   };
@@ -27,7 +32,68 @@ const Chat = () => {
           <img src="./info.png" alt="" />
         </div>
       </div>
-      <div className="center"></div>
+      <div className="center">
+        <div className="message">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              quos.
+            </p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="message">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              quos.
+            </p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="message own">
+          <div className="texts">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              quos.
+            </p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="message">
+          <img src="./avatar.png" alt="" />
+          <div className="texts">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              quos.
+            </p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="message own">
+          <div className="texts">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              quos.
+            </p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div className="message own">
+          <div className="texts">
+            <img src="./bgsky.png" alt="" />
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+              quos.
+            </p>
+            <span>1 min ago</span>
+          </div>
+        </div>
+        <div ref={endRef}></div>
+
+      </div>
       <div className="bottom">
         <div className="icons">
           <img src="./img.png" alt="" />
@@ -47,7 +113,7 @@ const Chat = () => {
             onClick={() => setOpen((prev) => !prev)}
           />
           <div className="picker">
-            <EmonjiPicker open={open} onEmojiClick={handleEmojiClick} />
+            <EmojiPicker open={open} onEmojiClick={handleEmojiClick} />
           </div>
         </div>
         <button className="sendButton">Send</button>
